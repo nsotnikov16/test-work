@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="styles/index.css">
+    <title>Document</title>
+</head>
+<body>
+    <div class="wrapper">
+        <button type="button" class="button-main">Кликни</button>
+    </div>
+    <div class="popup">
+        <div class="popup__container">
+            <button type="button" class="popup__close"></button>
+            <div class="popup__info">
+                <h1 class="popup__title">Получите набор файлов
+                     для руководителя:</h1>
+                <div class="popup__icons">
+                    <img src="images/doc.png" alt="#" class="popup__icon">
+                    <img src="images/xls.png" alt="#" class="popup__icon">
+                    <img src="images/pdf.png" alt="#" class="popup__icon">
+                    <img src="images/pdf.png" alt="#" class="popup__icon">
+                    <img src="images/pdf.png" alt="#" class="popup__icon">
+                    <img src="images/pdf.png" alt="#" class="popup__icon">
+                    <img src="images/pdf.png" alt="#" class="popup__icon">
+                </div>
+                <img src="images/main.png" alt="#" class="popup__image">
+            </div>
+            <form method="POST" class="popup__form" name="form">
+                <fieldset>
+                    <label for="email" class="popup__label">Введите Email для получения файлов:</label>
+                    <input id="email" class="popup__input" type="email" placeholder="Email" required>
+                </fieldset>
+                <fieldset>
+                    <label  for="tel" class="popup__label">Введите телефон для подтверждения доступа:</label>
+                    <input id="tel" class="popup__input" type="tel" placeholder="+7 (000) 000-00-00" pattern=([\+]*[7-8]{1}\s?[\(]*9[0-9]{2}[\)]*\s?\d{3}[-]*\d{2}[-]*\d{2}) required>
+                </fieldset>
+                <button class="popup__save" type="submit">
+                    <h2 class="popup__save-title">Скачать файлы</h2>
+                    <img src="images/button.png" alt="#" class="popup__save-img">
+                </button>
+                <p class="popup__form-subtitle">
+                    <span>PDF 4,7 MB</span>
+                    <span>DOC 0.8 MB</span>
+                    <span>XLS 1,2 MB</span>
+                </p>
+            </form>
+        </div>
+    </div>
+    <script type="module" src="index.js"></script>
+</body>
+</html>
