@@ -23,7 +23,7 @@ function handleEscClose (evt) {
     return document.removeEventListener('keydown', handleEscClose)
 }
 
-function submitForm(evt) {
+/* function submitForm(evt) {
     evt.preventDefault()
 
     fetch('/send.php', {
@@ -42,7 +42,7 @@ function submitForm(evt) {
 
         return Promise.reject(`Ошибка: ${res.status}, проверьте URL`);
     })
-}
+} */
 
 maskPhone("#tel")
 
