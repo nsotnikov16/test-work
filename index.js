@@ -23,26 +23,27 @@ function handleEscClose (evt) {
     return document.removeEventListener('keydown', handleEscClose)
 }
 
-/* function submitForm(evt) {
-    evt.preventDefault()
+async function submitForm(evt) {
+    evt.preventDefault();
 
-    fetch('/send.php', {
-        method: "POST",
-        headers: {
-            "Content-Type": "application/json",
-        },
-        body: JSON.stringify({
-            email: form.querySelector('#email').value,
-            tel: form.querySelector('#tel').value
-        })
-    }).then(res => {
-        if(res.ok) {
-            return res.text()
-        }
+    let formData = new FormData(form);
 
-        return Promise.reject(`Ошибка: ${res.status}, проверьте URL`);
-    })
-} */
+    form.classList.add('_sending');
+
+    let response = await fetch('send.php', {
+        method: 'POST',
+        body: formData
+    });
+    if (response.ok) {
+        let result = await response.json();
+        alert(result.message);
+        form.reset();
+        form.classList.remove('_sending');
+    } else {
+        alert("Ошибка");
+        form.classList.remove('_sending');
+    }
+}
 
 maskPhone("#tel")
 
