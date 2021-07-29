@@ -23,14 +23,31 @@ function handleEscClose (evt) {
     return document.removeEventListener('keydown', handleEscClose)
 }
 
-async function submitForm(evt) {
+/* async */ function submitForm(evt) {
     evt.preventDefault();
 
     let formData = new FormData(form);
 
     form.classList.add('_sending');
 
-    let response = await fetch('send.php', {
+    fetch('send.php', {
+        method: 'POST',
+        body: formData
+    }).then(res => {
+        if(res.ok) {
+            return res.json()
+        }
+        return Promise.reject(`Ошибка ${res.status}`)
+    }).then(res => {
+        alert(res.message)
+        form.reset();
+        form.classList.remove('_sending');
+    }).catch(err => {
+        alert(err);
+        form.classList.remove('_sending');
+    })
+
+   /*  let response = await fetch('send.php', {
         method: 'POST',
         body: formData
     });
@@ -42,7 +59,7 @@ async function submitForm(evt) {
     } else {
         alert("Ошибка");
         form.classList.remove('_sending');
-    }
+    } */
 }
 
 maskPhone("#tel")
